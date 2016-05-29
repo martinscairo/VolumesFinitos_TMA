@@ -9,6 +9,18 @@
 #ifndef VOLUMES_H
 #define VOLUMES_H
 
+/*! 
+ *  \brief	Classe que define informações para discretização de domínios
+ *  \class	Volumes
+ *  \file	Volumes.h
+ *  \author	Cairo Martins da Silva e Leonardo Oliveira Thimoteo
+ *  \version	1.0
+ *  \date       2016
+ *  \copyright  GNU Public License.
+ *  \warning    No warnings were related.
+ *  \bug	No bugs were related.
+ */
+
 //==============================================================================
 //                              C++ Includes
 //==============================================================================
@@ -51,12 +63,22 @@ public:
    
                                     
    //! Construtora de cópia
+/*!
+  \param _orig Variável tipo Volumes a ser copiada.
+*/
    Volumes(const Volumes& _orig):   comprimento (_orig.comprimento),
                                     nVol (_orig.nVol), 
                                     imagemEsquerda (_orig.imagemEsquerda), 
                                     imagemDireita(_orig.imagemDireita) {};
                                     
-   //! Construtora específica a partir do fornecimento de todos parâmetros                                  
+                                    
+   //! Construtora específica a partir do fornecimento de todos parâmetros 
+/*!
+  \param _comp   Comprimento do domínio a ser discretizado.
+  \param _nvol   Número de volumes associados à discretização do domínio.
+  \param _imgesq Valor da imagem esquerda do volume periférico inicial do domínio.
+  \param _imgdir Valor da imagem direita do volume periférico último do domínio.
+*/
    Volumes (const Real& _comp, const int& _nvol, const Real& _imgesq, 
             const Real& _imgdir) : comprimento (_comp), 
                                     nVol (_nvol), 
@@ -72,7 +94,7 @@ public:
 //------------------------------------------------------------------------------  
     //! Sobrecarga do operador =..
 /*!
-  \param _orig Variável tipo GeoMap1D a ser copiada.
+  \param _orig Variável tipo Volumes a ser copiada.
 */    
 const Volumes& operator= (const Volumes& _orig);
 
@@ -81,15 +103,29 @@ const Volumes& operator= (const Volumes& _orig);
 //------------------------------------------------------------------------------    
 
 //! Função que retorna o comprimento do intervalo de domínio.
+/*!
+   \return Comprimento do intervalo de domínio.
+*/
     inline  const Real  COMPRIMENTO() const {return comprimento;};
+    
  
 //! Função que retorna o número de volumes no intervalo.
+/*!
+   \return Número de volumes a ser dividido o intervalo
+*/
     inline  const int   NVOL() const {return nVol;};
     
+    
 //! Função que retorna o valor da imagem esquerda do volume periférico inicial.
+/*!
+   \return Valor da imagem esquerda do volume periférico inicial do domínio.
+*/
     inline  const Real  IMGESQUERDA() const {return imagemEsquerda;};
     
 //! Função que retorna o valor da imagem do volume periférico final.
+/*!   
+  \return _imgdir Valor da imagem direita do volume periférico último do domínio.
+*/
     inline  const Real  IMGDIREITA() const {return imagemDireita;};
     
     
