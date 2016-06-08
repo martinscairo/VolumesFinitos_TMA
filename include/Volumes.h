@@ -40,10 +40,11 @@ class Volumes {
 //------------------------------------------------------------------------------
 //                           Friend functions
 //------------------------------------------------------------------------------
-    //! Sobrecarga do operador << para impressão
+    
+//! Sobrecarga do operador << para impressão
     friend std :: ostream& operator << (std :: ostream&, const Volumes&);
     
-    //! Sobrecarga do operador >> para obtenção de valores
+//! Sobrecarga do operador >> para obtenção de valores
     friend std :: istream& operator >> (std :: istream&, Volumes&);
     
     
@@ -55,14 +56,14 @@ public:
 //                           constructors e destructor
 //------------------------------------------------------------------------------  
     
-    //! Construtora default.
+//! Construtora default.
     Volumes() :                     comprimento (0), 
                                     nVol(0), 
                                     imagemEsquerda (0), 
                                     imagemDireita(0) {};
    
                                     
-   //! Construtora de cópia
+//! Construtora de cópia
 /*!
   \param _orig Variável tipo Volumes a ser copiada.
 */
@@ -72,7 +73,7 @@ public:
                                     imagemDireita(_orig.imagemDireita) {};
                                     
                                     
-   //! Construtora específica a partir do fornecimento de todos parâmetros 
+//! Construtora específica a partir do fornecimento de todos parâmetros 
 /*!
   \param _comp   Comprimento do domínio a ser discretizado.
   \param _nvol   Número de volumes associados à discretização do domínio.

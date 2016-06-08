@@ -15,47 +15,35 @@
 #include <vector>
 #include <string>
 
-
-//==============================================================================
-//                              other Includes 
-//==============================================================================
-
-
 //==============================================================================
 //                               Own includes 
 //==============================================================================
 #include <Volumes.h>
 
 //==============================================================================
-//                                typedefs
-//==============================================================================
-//    typedef std :: vector <Real>                Ap, Ae, Aw, Sp;
-
-//==============================================================================
 //                                prototypes
 //==============================================================================
 Real CalculaDistFaces (Volumes&);
 void print (Real x[], const int &, const std::string&); 
-void CompletaDiagPrinc (Volumes&, Real x[], const int&);
-void CompletaDiagLeste (Volumes&, Real x[], const int&);
-void CompletaDiagOeste (Volumes&, Real x[], const int&);
-void CompletaVetorSolucao (Volumes&, Real x[], const int&);
-std::string RetornaNome (std :: string&);
+void CompletaDiagPrinc (Volumes&, Real x[]);
+void CompletaDiagLeste (Volumes&, Real x[]);
+void CompletaDiagOeste (Volumes&, Real x[]);
+void CompletaVetorSolucao (Volumes&, Real x[]);
 
 //==============================================================================
 //                              main function
 //==============================================================================
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     
 //------------------------------------------------------------------------------
 //                 Leitura do arquivo de configuracao Volumes.txt
 //------------------------------------------------------------------------------
            
-    std :: ifstream input("Volumes.txt"); //PRECISA EXISTIR
-        
-   
-    if (!input){
+    std :: ifstream input("Volumes.txt"); //O ARQUIVO PRECISA EXISTIR     
+    if (!input)
+    {
         std :: cerr << "Arquivo inexistente" << std :: endl;
         exit (EXIT_FAILURE);
     }
@@ -64,6 +52,7 @@ int main(int argc, char** argv) {
 //------------------------------------------------------------------------------
     Volumes v1;
     input >> v1;      //importanto arquivos de dados
+    std::cout << "v1:" << v1 << std :: endl;
     input.close();    //fechando arquivo de dados
     
 //------------------------------------------------------------------------------
@@ -95,37 +84,40 @@ int main(int argc, char** argv) {
 //______________ 1. completando vetores diagonal principal______________________   
     
     std:: cout << "Imprimindo vetor da diagonal principal" << std :: endl;    
-    CompletaDiagPrinc (v1, Ap, v1.NVOL());
-    std :: string NOMEVETOR("Ap"); //define variável do tipo string, 
-    //que auxiliará na impressão do vetor, contendo o seu nome
-    print (Ap, v1.NVOL(), RetornaNome (NOMEVETOR));
+    CompletaDiagPrinc (v1, Ap);    
+    std :: string NOMEVETOR("Ap"); 
+    //cria variável do tipo string, que auxiliará na impressão do vetor
+    
+    print (Ap, v1.NVOL(), NOMEVETOR);
     
         
 //_________________2. completando vetores diagonal oeste________________________
     
    std:: cout << "\n\nImprimindo vetor da diagonal oeste" << std :: endl;    
-   CompletaDiagOeste (v1, Aw, v1.NVOL());
+   CompletaDiagOeste (v1, Aw);
    NOMEVETOR.erase(1,2);
+   //delete a string anterior associada à variável NOMEVETOR, para redefini-la
+   
    NOMEVETOR="Aw";
-   print (Aw, v1.NVOL(), RetornaNome (NOMEVETOR));
+   print (Aw, v1.NVOL(), NOMEVETOR);
 
 
 //_______________3. completando vetores diagonal leste__________________________
    
    std:: cout << "\n\nImprimindo vetor da diagonal leste" << std :: endl;         
-   CompletaDiagLeste (v1, Ae, v1.NVOL());
+   CompletaDiagLeste (v1, Ae);
    NOMEVETOR.erase(1,2);
    NOMEVETOR="Ae";
-   print (Ae, v1.NVOL(), RetornaNome (NOMEVETOR));
+   print (Ae, v1.NVOL(), NOMEVETOR);
 
 
 //___________________4. completando vetores resultados__________________________   
    
    std:: cout << "\n\nImprimindo vetor de resultados" << std :: endl;         
-   CompletaVetorSolucao (v1, Sp, v1.NVOL());
+   CompletaVetorSolucao (v1, Sp);
    NOMEVETOR.erase(1,2);
    NOMEVETOR="Sp";
-   print (Sp, v1.NVOL(), RetornaNome (NOMEVETOR));
+   print (Sp, v1.NVOL(), NOMEVETOR);
     
 
 //------------------------------------------------------------------------------
@@ -155,11 +147,11 @@ Real CalculaDistFaces (Volumes& _vol)
 //------------------------------------------------------------------------------
 //                2. Completando vetor da diagonal principal
 //------------------------------------------------------------------------------
-void CompletaDiagPrinc (Volumes& _vol, Real x[], const int& _a)
+void CompletaDiagPrinc (Volumes& _vol, Real x[])
 {
-    for (int i=0; i<_a; i++)
+    for (int i=0; i<_vol.NVOL(); i++)
     {
-        if (i==0 || i== _a-1)  x[i]=3;
+        if (i==0 || i== _vol.NVOL()-1)  x[i]=3;
         else x[i]=2;
     }
 }    
@@ -167,10 +159,10 @@ void CompletaDiagPrinc (Volumes& _vol, Real x[], const int& _a)
 //------------------------------------------------------------------------------
 //                3. Completando vetor da diagonal Oeste
 //------------------------------------------------------------------------------
-void CompletaDiagOeste (Volumes& _vol, Real x[], const int& _a)
+void CompletaDiagOeste (Volumes& _vol, Real x[])
 {
 
-    for (int i=0; i<_a; i++)
+    for (int i=0; i<_vol.NVOL(); i++)
     {
         if (i==0) x[i]=0;
         else x[i]=-1;
@@ -180,12 +172,12 @@ void CompletaDiagOeste (Volumes& _vol, Real x[], const int& _a)
 //------------------------------------------------------------------------------
 //                4. Completando vetores da diagonal leste
 //------------------------------------------------------------------------------
-void CompletaDiagLeste (Volumes& _vol, Real x[], const int& _a)
+void CompletaDiagLeste (Volumes& _vol, Real x[])
 {
 
-    for (int i=0; i<_a; i++)
+    for (int i=0; i<_vol.NVOL(); i++)
     {
-        if (i==_a-1) x[i]=0;
+        if (i==_vol.NVOL()-1) x[i]=0;
         else x[i]=-1;
     }
 }
@@ -193,12 +185,12 @@ void CompletaDiagLeste (Volumes& _vol, Real x[], const int& _a)
 //------------------------------------------------------------------------------
 //                     5. Completando vetor solução
 //------------------------------------------------------------------------------
-void CompletaVetorSolucao(Volumes& _vol, Real x[], const int& _a)
+void CompletaVetorSolucao(Volumes& _vol, Real x[])
 {
-    for (int i=0; i<_a; i++)
+    for (int i=0; i<_vol.NVOL(); i++)
     {
         if(i==0) x[i]=2*_vol.IMGESQUERDA();
-        else if (i==_a-1) x[i]=2*_vol.IMGDIREITA();
+        else if (i==_vol.NVOL()-1) x[i]=2*_vol.IMGDIREITA();
         else x[i]=0;
     }
 }
@@ -206,19 +198,12 @@ void CompletaVetorSolucao(Volumes& _vol, Real x[], const int& _a)
 //------------------------------------------------------------------------------
 //                     6. Função para impressão de vetores
 //------------------------------------------------------------------------------
-    void print (Real x[], int const & _a, const std:: string & _nome) 
-    {
-       for (int i=0; i<_a; i++)
-       {
-           std::cout << _nome << "[" <<i << "]="  << x[i] << std::endl;
-       }
-    }
+void print (Real x[], int const & _a, const std:: string & _nome) 
+{
+   for (int i=0; i< _a; i++)
+   {
+       std::cout << _nome << "[" <<i << "]="  << x[i] << std::endl;
+   }
+}
+
     
-    
-//------------------------------------------------------------------------------
-//                       7. Obtendo nome dos vetores
-//------------------------------------------------------------------------------    
-  std:: string RetornaNome (std :: string& _nome)
-  {
-       return _nome;
-  }
