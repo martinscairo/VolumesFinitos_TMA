@@ -66,12 +66,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/volumesfinitos.exe: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/6b572235/Volumes.o: /cygdrive/C/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/lib/Volumes.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/6b572235
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I\"C\:/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/include\" -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/6b572235/Volumes.o /cygdrive/C/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/lib/Volumes.cpp
+	$(COMPILE.cc) -O2 -I/cygdrive/C/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/6b572235/Volumes.o /cygdrive/C/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/lib/Volumes.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I\"C\:/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/include\" -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -I/cygdrive/C/Users/Cliente/OneDrive/Iniciação\ Científica/Netbeans/VolumesFinitos/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

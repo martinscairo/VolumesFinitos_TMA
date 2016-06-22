@@ -1,1 +1,7 @@
-5 5 1 1
+//Arquivo contendo os dados iniciais do programa
+
+Comprimento       = 8.0
+Abscissa_inicial  = 0.0
+Imagem_esquerda   = 0.0
+Imagem_direita    = 16.0
+Numero_Volumes    = 4

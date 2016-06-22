@@ -60,7 +60,8 @@ public:
     Volumes() :                     comprimento (0), 
                                     nVol(0), 
                                     imagemEsquerda (0), 
-                                    imagemDireita(0) {};
+                                    imagemDireita(0),
+                                    xFace (0) {};
    
                                     
 //! Construtora de cópia
@@ -70,7 +71,8 @@ public:
    Volumes(const Volumes& _orig):   comprimento (_orig.comprimento),
                                     nVol (_orig.nVol), 
                                     imagemEsquerda (_orig.imagemEsquerda), 
-                                    imagemDireita(_orig.imagemDireita) {};
+                                    imagemDireita(_orig.imagemDireita),
+                                    xFace (_orig.xFace){};
                                     
                                     
 //! Construtora específica a partir do fornecimento de todos parâmetros 
@@ -81,10 +83,11 @@ public:
   \param _imgdir Valor da imagem direita do volume periférico último do domínio.
 */
    Volumes (const Real& _comp, const int& _nvol, const Real& _imgesq, 
-            const Real& _imgdir) : comprimento (_comp), 
+            const Real& _imgdir, const Real _xfc) : comprimento (_comp), 
                                     nVol (_nvol), 
                                     imagemEsquerda (_imgesq), 
-                                    imagemDireita (_imgdir) {};
+                                    imagemDireita (_imgdir),
+                                    xFace (_xfc){};
     
 
     //! Destrutora               
@@ -125,18 +128,24 @@ const Volumes& operator= (const Volumes& _orig);
     
 //! Função que retorna o valor da imagem do volume periférico final.
 /*!   
-  \return _imgdir Valor da imagem direita do volume periférico último do domínio.
+  \return  Valor da imagem direita do volume periférico último do domínio.
 */
     inline  const Real  IMGDIREITA() const {return imagemDireita;};
     
+//! Função que retorna a abscissa inicial do intervalo.
+/*!   
+  \return Valor da abscissa inicial do intervalo do domínio
+*/
+    inline  const Real  XFACE() const {return xFace;};
     
     
     
-private:
+//private:
     
     Real  comprimento,       //!Comprimento do intervalo de domínio 
           imagemEsquerda,    //!Imagem do volume periférico à esquerda 
-          imagemDireita;     //!Imagem do volume periférico à direita 
+          imagemDireita,     //!Imagem do volume periférico à direita 
+          xFace;             //!Abscissa da posição inicial dos Volumes
     
     int   nVol;              //!Número de volumes discretizados do domínio
             

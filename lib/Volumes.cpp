@@ -2,36 +2,42 @@
 #include <iostream>
 
 //------------------------------------------------------------------------------
-//                             operator <<
+//                           Funções Friend
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//                             Operator <<
 //------------------------------------------------------------------------------
  std :: ostream& operator << (std :: ostream& _os, const Volumes& _vol)
  {
-    _os << "compri: "         << _vol.comprimento << 
-            "  nVol: " << _vol.nVol << 
-            "  imagemesquerda: " << _vol.imagemEsquerda 
-            <<"   imagem direito:" <<_vol.imagemDireita;
+    _os << "Comprimento: "         << _vol.comprimento 
+        << "  número de volumes: " << _vol.nVol
+        << "  Imagem Esquerda: "   << _vol.imagemEsquerda 
+        <<"   imagem direita: "    << _vol.imagemDireita
+        << "Xface: "               << _vol.xFace;
     
     return _os;
     
  }
  
 //------------------------------------------------------------------------------
-//                            operator >> 
+//                            Operator >> 
 //------------------------------------------------------------------------------
  std :: istream& operator >> (std :: istream& _os, Volumes& _vol)
  {
      _os >> _vol.comprimento >> 
-            _vol.nVol >> _vol.imagemDireita >> _vol.imagemEsquerda;
+            _vol.nVol >> _vol.imagemDireita >> _vol.imagemEsquerda >> 
+            _vol.xFace;
+     
      return _os;
  }
  
  
 //==============================================================================
-//                        sobrecarga de operadores
+//                        Sobrecarga de Operadores
 //==============================================================================
  
 //------------------------------------------------------------------------------
-//                             operator = 
+//                             Operator = 
 //------------------------------------------------------------------------------
  const Volumes&  Volumes :: operator= (const Volumes& _orig)
  {
@@ -41,6 +47,7 @@
          imagemEsquerda = _orig.imagemEsquerda;
          imagemDireita  = _orig.imagemDireita;
          nVol           = _orig.nVol;
+         xFace          = _orig.xFace;
      }
      
      return *this;

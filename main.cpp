@@ -36,21 +36,34 @@ typedef std :: vector <Real>                          vecReal;
 
 const int LeituraDadosProblema (Volumes&);
 
-void GeracaoMalha (vecReal&, vecReal&, vecReal&, vecReal&, Volumes&);
+void GeracaoMalha (vecReal&,
+                   vecReal&, 
+                   vecReal&, 
+                   vecReal&, 
+                   Volumes&);
 
-void CalculaCoeficientes (vecReal&, vecReal&, vecReal&, vecReal&,
-                          vecReal&, vecReal&, Volumes&);
+void CalculaCoeficientes (vecReal&,
+                          vecReal&, 
+                          vecReal&, 
+                          vecReal&,
+                          vecReal&, 
+                          vecReal&, 
+                          Volumes&);
 
-void MultiplicadorPrincipal (vecReal&, vecReal&, vecReal&, vecReal&);
+void MultiplicadorPrincipal (vecReal&, 
+                             vecReal&, 
+                             vecReal&, 
+                             vecReal&);
 
-void MultiplicadorVetSol (vecReal&, vecReal&, vecReal&, vecReal&, vecReal&);
+void MultiplicadorVetSol (vecReal&, 
+                          vecReal&, 
+                          vecReal&, 
+                          vecReal&, 
+                          vecReal&);
 
-void Solver (vecReal&, vecReal&, vecReal&);
-
-
-
-
-
+void Solver (vecReal&, 
+             vecReal&, 
+             vecReal&);
 
 //==============================================================================
 //                              main function
@@ -80,7 +93,6 @@ int main(int argc, char** argv)
 //------------------------------------------------------------------------------
 //     Calculando coeficientes dos vetores para preparar a solução do sistema
 //------------------------------------------------------------------------------
-    
     std :: vector <Real>             Ap (v1.NVOL()),
                                      Ae (v1.NVOL()),
                                      Aw (v1.NVOL()),
@@ -116,10 +128,6 @@ int main(int argc, char** argv)
         std :: cout << "Solution[" << i << "]=" << Solution[i] << std :: endl;
     } 
 }   
-
-
-
-
 
 //==============================================================================
 //                           funções auxiliares
@@ -203,8 +211,11 @@ int main(int argc, char** argv)
 //              2. Função para gerar malha envolvendo o intervalo dado
 //------------------------------------------------------------------------------ 
  
-void GeracaoMalha(vecReal& xfronteira, vecReal& xcentro, vecReal& distcentro,
-                  vecReal& distface, Volumes& _vol) 
+void GeracaoMalha(vecReal& xfronteira, 
+                  vecReal& xcentro, 
+                  vecReal& distcentro,
+                  vecReal& distface, 
+                  Volumes& _vol) 
  {
      Real DistFronteiras(_vol.comprimento/_vol.nVol), 
           DistCentros (DistFronteiras);
@@ -250,8 +261,13 @@ void GeracaoMalha(vecReal& xfronteira, vecReal& xcentro, vecReal& distcentro,
 //------------------------------------------------------------------------------
 //          3. função para armazenar coeficientes dos vetores em questão
 //------------------------------------------------------------------------------
-void CalculaCoeficientes (vecReal& distf, vecReal& distc, vecReal& ap, 
-                          vecReal& ae, vecReal& aw, vecReal& sp, Volumes& _v)
+void CalculaCoeficientes (vecReal& distf, 
+                          vecReal& distc, 
+                          vecReal& ap, 
+                          vecReal& ae, 
+                          vecReal& aw, 
+                          vecReal& sp, 
+                          Volumes& _v)
 {
     
 //__________________1.Completando vetor diagonal oeste__________________________
@@ -286,8 +302,10 @@ void CalculaCoeficientes (vecReal& distf, vecReal& distc, vecReal& ap,
 //------------------------------------------------------------------------------
 //    4. Função para armazenar o vetor de multiplicadores da diagonal principal
 //------------------------------------------------------------------------------
-void MultiplicadorPrincipal (vecReal& vetP, vecReal& vetOeste, vecReal& vetLeste, 
-        vecReal& vetDiagPrinc)
+void MultiplicadorPrincipal (vecReal& vetP,
+                             vecReal& vetOeste, 
+                             vecReal& vetLeste, 
+                             vecReal& vetDiagPrinc)
 {    
 //__________________1.Completando vetor fator multiplicador P___________________
     for (int i=0; i<vetDiagPrinc.size(); i++)
@@ -302,8 +320,11 @@ void MultiplicadorPrincipal (vecReal& vetP, vecReal& vetOeste, vecReal& vetLeste
 //------------------------------------------------------------------------------
 //    5. Função para armazenar o vetor de multiplicadores do vetor solução
 //------------------------------------------------------------------------------
-void MultiplicadorVetSol (vecReal& vetQ, vecReal& vetP, vecReal& vetSol, 
-        vecReal& vetDiagPrinc,   vecReal& vetOeste)
+void MultiplicadorVetSol (vecReal& vetQ,
+                          vecReal& vetP, 
+                          vecReal& vetSol, 
+                          vecReal& vetDiagPrinc,   
+                          vecReal& vetOeste)
 {
      for (int i=0; i<vetDiagPrinc.size(); i++) 
      {
@@ -317,7 +338,9 @@ void MultiplicadorVetSol (vecReal& vetQ, vecReal& vetP, vecReal& vetSol,
 //------------------------------------------------------------------------------
 //           6. Função para calcular a solução do sistema linear
 //------------------------------------------------------------------------------
-void Solver (vecReal& vetQ, vecReal& vetP, vecReal& vetResultado)
+void Solver (vecReal& vetQ, 
+             vecReal& vetP, 
+             vecReal& vetResultado)
 {
     for (int i=vetQ.size()-1; i>=0; --i)
     {

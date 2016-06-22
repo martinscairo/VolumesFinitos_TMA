@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L/cygdrive/C/Software/Cygwin/usr/local/lib -L/cygdrive/C/Software/Cygwin/usr/local/include -lconfig++
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

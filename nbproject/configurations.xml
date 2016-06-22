@@ -43,6 +43,15 @@
             <pElem>C:/Users/Cliente/OneDrive/Iniciação Científica/Netbeans/VolumesFinitos/include</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>C:/Software/Cygwin/usr/local/lib</pElem>
+            <pElem>C:/Software/Cygwin/usr/local/include</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>config++</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="C:/Users/Cliente/OneDrive/Iniciação Científica/Netbeans/VolumesFinitos/include/Volumes.h"
             ex="false"
@@ -71,7 +80,7 @@
           <developmentMode>5</developmentMode>
           <standard>8</standard>
           <incDir>
-            <pElem>"C:/Users/Cliente/OneDrive/Iniciação Científica/Netbeans/VolumesFinitos/include"</pElem>
+            <pElem>C:/Users/Cliente/OneDrive/Iniciação Científica/Netbeans/VolumesFinitos/include</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
